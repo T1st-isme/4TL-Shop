@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DOAN_NHOM_CUOIKY_FTL.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<h2>Sản Phẩm</h2>
+
+<table class="table">
+    <tr>
+        <th> <p>Tên sản phẩm</p></th>
+        <th>  @Html.DisplayNameFor(model => model.DecriptionPro)</th>
+        <th> Giá tiên(Triệu đồng)</th>
+        <th> <p>Hình ảnh</p> </th>
+        <th> Số lượng </th>
+        <th></th>
+        <th>
+            <p>Loại sản phẩm</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>  @Html.DisplayFor(modelItem => item.NamePro)</td>
+            <td> @Html.DisplayFor(modelItem => item.DecriptionPro) </td>
+            <td>  @Html.DisplayFor(modelItem => item.Price)</td>
+            <td> <img src="@Url.Content(item.ImagePro)" height="150" width="150" /> </td>
+            <td>  @Html.DisplayFor(modelItem => item.Quantity)</td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.NameCate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+    }
+
+</table>

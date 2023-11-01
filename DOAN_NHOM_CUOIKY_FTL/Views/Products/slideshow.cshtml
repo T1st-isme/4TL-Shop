@@ -1,0 +1,61 @@
+﻿@using DOAN_NHOM_CUOIKY_FTL.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    #position-search {
+        margin-left: 600px;
+    }
+</style>
+<img class="hinh-navi" src="https://images2-focus-opensocial.googleusercontent.com/gadgets/proxy?url=https%3A%2F%2Fi.imgur.com%2FDVNzOpk.jpg&container=focus&gadget=a&no_expand=1&resize_h=0&rewriteMime=image%2F*" alt="">
+<div class="wrapper">
+
+    <div id="position-search">
+        @{Html.RenderAction("CategoryPartial");}
+    </div>
+</div>
+<h1 id="tieude-sanpham" style="font-size: 40px;margin-top:120px;">SẢN PHẨM BÁN CHẠY</h1>
+
+<div id="slideshow">
+    <div>
+        @{Html.RenderAction("Top5", "OrderDetails");}
+    </div>
+    <h1 id="tieude-sanpham" style="font-size: 40px;">SẢN PHẨM MỚI</h1>
+    <div id="slideshow">
+        <div id="slideshow1">
+            <div class="slidechange">
+                @foreach (var pro in Model)
+                {
+                    <a href="/Products/Viewdetail/@pro.ProductID" class="btn btn-dafault">
+                        <div class="slide">
+                            <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach (var pro in Model)
+            {
+                <a href="/Products/Viewdetail/@pro.ProductID" class="btn btn-dafault">
+                    <div class="card">
+                        <div id="font-chu">
+                            <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                            <p class="font-text">@Html.DisplayFor(model => pro.NamePro)</p>
+                            <p class="font-text">@Html.DisplayFor(model => pro.Price)</p>
+                            <a class="font-text-buy" href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-dafault">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </a>
+            }
+
+            <div>
+                <a id="tieude-xemthem" href="/Products/Index" style="color: red;">Xem Thêm</a>
+            </div>
+        </div>
+    </div>
+</div>

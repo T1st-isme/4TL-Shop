@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/css/masterstyle.css">
+    <link rel="stylesheet" href="~/Content/css/basestyle.css">
+    <script language="Javascript" src="~/Scripts/scripts.js"></script>
+    <script src="https://kit.fontawesome.com/5d12fe5dc4.js" crossorigin="anonymous"></script>
+
+</head>
+ 
+<body>
+    <div id="container">
+        <div class="header">
+            <div class="grid">
+                <div class="header-logo">
+                    
+                        <a href="/Products/slideshow" class="header-logo__adr">
+
+                            <img src="~/Content/img-logo/logo-no-background.png" alt="HUFLIT LOGO" class="header-logo__img">
+                            <span>
+                                <p class="header-logo__text">FourTL</p>
+                            </span>
+                        </a>
+</div>
+                <div class="header-menu">
+                    <div class="header-menu-list">
+                        <div class="header-menu-list__nav">
+                            <div class="header-menu-list__nav-menu">
+                                <a href="/Products/slideshow" class="header-menu-list__nav-menu-adr ">
+                                    <span class="header-menu-list__nav-menu-text">Trang Chủ</span>
+                                </a>
+                            </div>
+                            <div class="header-menu-list__nav-menu">
+                                <a href="/Products/Index" class="header-menu-list__nav-menu-adr">
+                                    <span class="header-menu-list__nav-menu-text">Sản phẩm</span>
+                                </a>
+                            </div>
+                            <div class="header-menu-list__nav-menu">
+                                <a href="/Home/Gioithieu" class="header-menu-list__nav-menu-adr ">
+                                    <span class="header-menu-list__nav-menu-text">Giới thiệu</span>
+                                </a>
+                            </div>
+                            <div class="header-menu-list__nav-menu">
+                                <a href="/Home/Lienhe" class="header-menu-list__nav-menu-adr">
+                                    <span class="header-menu-list__nav-menu-text">Liên hệ</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-search">
+                <div class="header-search__expand">
+                    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                    {
+ 
+                        <div class="wrap">
+                            <div class="header-search-btn">
+                                <td class="header-search-btn--searchTerm">
+                                    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder = "Nhập Sản Phẩm Cần Tìm" })
+                                     <button class="header-search-btn--searchButton" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+</div>
+                        </div>
+                    }
+                </div>
+                <span class="header__menu_bar">
+                    <i class="header__menu_bar--icon fa fa-bars"></i>
+                    <ul class="submenu_bar">
+                        <li class="submenu_bar--list">
+                            @if (Session["UserName"] == null)
+                            {
+                                <a class="submenu_bar--list--text" href="#">Thông Tin</a>
+                            }
+                            else
+                            {
+                                <a class="submenu_bar--list--text" href="/Customers/Edit/@HttpContext.Current.Session["IDCus"].ToString()" style="font-size:12px;">Thông Tin</a>
+                            }
+                        </li>
+                        <li class="submenu_bar--list">
+                            @if (Session["UserName"] == null)
+                            {
+                                <a class="submenu_bar--list--text" href="#">Đơn Mua</a>
+                            }
+                            else
+                            {
+                                <a class="submenu_bar--list--text" href="/OrderProes/Details/@HttpContext.Current.Session["IDCus"].ToString()" style="font-size:12px;">Đơn Mua</a>
+                            }
+                        </li>
+                        <li class="submenu_bar--list">
+
+                            <a href="/ShoppingCart/ShowCart" class="submenu_bar--list--text">Giỏ Hàng</a>
+
+                        </li>
+                        <li class="submenu_bar--list">
+                            @if (Session["UserName"] == null)
+                            {
+                                <a class="submenu_bar--list--text" href="#">Đăng xuất</a>
+                            }
+                            else
+                            {
+                                <a href="/Customers/LogOutUser" class="submenu_bar--list--text">Đăng xuất</a>
+                            }
+                        </li>
+                    </ul>
+                </span>
+                
+                </div>
+
+
+                    
+                 
+
+
+           
+            <div class="login">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav_log">
+                        @if (Session["UserName"] == null)
+                        {
+                            <a class="a_nav_log" href="/Customers/LoginCus"><span class="glyphicon glyphicon-user"></span> Login </a>
+                        }
+                        else
+                        {
+                        }
+                    </li>
+
+                    <li class="nav_log">
+                        @if (Session["UserName"] == null)
+                        {
+                            <a class="a_nav_log" href="/Customers/Create"><span class="glyphicon glyphicon-log-in"></span> Register </a>
+                        }
+                        else
+                        {
+                        }
+                    </li>
+
+       
+
+                    <li class="format-hello">
+                        @if (Session["UserName"] == null)
+                        {
+                        }
+                        else
+                        {
+                           
+                            <a  class="a_nav_log" href="/Customers/edit/@HttpContext.Current.Session["IDCus"].ToString()" > <span class="glyphicon glyphicon-log-in"> <text> Hello </text> @Session["UserName"]</span></a>
+
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    
+    
+    <div class="content">      
+        <div> @RenderBody()  </div>   
+           
+    </div>
+        <div id="footer">
+            <ul class="menu-footer">
+                <li class="menu-dot">
+                    <p class="tieude-footer">CHĂM SÓC KHÁCH HÀNG</p>
+                    <ul class="menu-dot2">
+                        <li class="menu-dot1 menu-le"><a href="#">Trung Tâm Trợ Giúp</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#">Hướng Dẫn Mua Hàng</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#">Vận Chuyển</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#">Trả Hàng & Hoàn Tiền</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#"> Chăm Sóc Khách Hàng</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#"> Chính Sách Bảo Hành</a></li>
+                    </ul>
+                </li>
+                <li class="menu-dot">
+                    <p class="tieude-footer">THEO DÕI CHÚNG TÔI TRÊN</p>
+                    <ul class="menu-dot2">
+                        <li class="menu-dot1 menu-le"><a href="#">Facebook</a></li>
+                        <li class="menu-dot1 menu-le"><a href="#">Instagram</a></li>
+                    </ul>
+                </li>
+                <li class="menu-dot">
+                    <p class="tieude-footer">THANH TOÁN</p>
+                    <ul class="menu-dot3">
+                        <span>
+                            <img src="https://cf.shopee.vn/file/d4bbea4570b93bfd5fc652ca82a262a8" />   <img src="https://cf.shopee.vn/file/a0a9062ebe19b45c1ae0506f16af5c16" />  <img src="https://cf.shopee.vn/file/38fd98e55806c3b2e4535c4e4a6c4c08" />
+                        </span></br>
+                        <span>
+                            <img src="https://cf.shopee.vn/file/2c46b83d84111ddc32cfd3b5995d9281" />   <img src="https://cf.shopee.vn/file/bc2a874caeee705449c164be385b796c" />  <img src="https://cf.shopee.vn/file/9263fa8c83628f5deff55e2a90758b06" />
+                        </span>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+   </div>
+   
+</body>
+
+</html>
+

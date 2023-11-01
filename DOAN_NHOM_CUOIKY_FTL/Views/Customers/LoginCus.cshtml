@@ -1,0 +1,42 @@
+﻿@model DOAN_NHOM_CUOIKY_FTL.Models.Customer
+@{
+    ViewBag.Title = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>   
+ .field-validation-error {
+        color: red;
+    }
+</style>
+@using (Html.BeginForm("LoginAccount", "Customers"))
+{
+    @Html.AntiForgeryToken()
+    <div class="login">
+
+        <div class="form">
+            <h2 style="color:white;position:relative; top: 0px;">ĐĂNG NHẬP</h2>
+            <div class="hinh-login">
+                 <img src="~/Content/img-logo/logo-no-background.png" alt="HUFLIT LOGO"  width="150">
+            </div>
+            <div class="place">
+                <p>Tài Khoản</p>
+                @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Nhập Tài Khoản", style = "field-validation-error" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+            <div class="place">
+                <p>Nhập Mật Khẩu</p>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Nhập Mật Khẩu" } })
+                @Html.ValidationMessageFor(model => model.Password)
+                @if (ViewBag.ErrorInfo != null)
+                {
+                    <p style="color:red">@ViewBag.ErrorInfo</p>
+                }
+            </div>
+            <input type="submit" value="Đăng Nhập" class="submit" id="sub">
+            <div style="font-size: 20px; margin-top: 10px">
+                <a style="color:white;" href="~/Products/slideshow" class="glyphicon glyphicon-home" style="font-size:large"> Trở về trang chủ</a>
+            </div>
+
+        </div>
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@model DOAN_NHOM_CUOIKY_FTL.Models.OrderPro
+
+@{
+    ViewBag.Title = "Lịch Sữ Mua Hàng";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    .table-bordered {
+        border: 1px solid black;
+        margin: 0;
+    }
+</style>
+    <div style="position:relative;top:100px;left:30px;font-size:20px;margin:0">
+        <div>
+            <p>Ngày Đặt Hàng:  @Html.DisplayFor(model => model.DateOrder) </p>
+            <p>
+                Địa Chỉ Giao Hàng: @Html.DisplayFor(model => model.AddressDeliverry)
+            </p>
+            <p>
+                Tên Khách Hàng: @Html.DisplayFor(model => model.Customer.NameCus)
+            </p>
+        </div>
+        <h4>Chi tiết Đơn Hàng</h4>
+        <table class="table-bordered" width="500px">
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th></th>
+                <th>Số Lượng</th>
+                <th></th>
+                <th>Đơn Giá</th>
+                <th></th>
+                <th>Thành Tiền</th>
+            </tr>
+            @foreach (var item in @Model.OrderDetail)
+            {
+                <tr style="text-align:center">
+                    <td style="margin-left:20px">@item.IDProduct</td>
+                    <td></td>
+                    <td>@item.Quantity</td>
+                    <td></td>
+
+                    <td>@item.UnitPrice</td>
+                    <td></td>
+
+                    <td>@(item.Quantity * item.UnitPrice)</td>
+                    <td></td>
+
+                </tr>
+            }
+        </table>
+        <p>
+            @Html.ActionLink("Mua sản phẩm khác", "Index", "Products")
+        </p>
+    </div>
+
+}
+ 

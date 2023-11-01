@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DOAN_NHOM_CUOIKY_FTL", "DOAN_NHOM_CUOIKY_FTL\DOAN_NHOM_CUOIKY_FTL.csproj", "{A779A46F-4BD2-43EF-863E-6E0C54B33022}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "shop", "sql\shop\shop.sqlproj", "{4C7A5009-E36B-47D6-8F77-8D1075C40102}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A779A46F-4BD2-43EF-863E-6E0C54B33022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A779A46F-4BD2-43EF-863E-6E0C54B33022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A779A46F-4BD2-43EF-863E-6E0C54B33022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A779A46F-4BD2-43EF-863E-6E0C54B33022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7A5009-E36B-47D6-8F77-8D1075C40102}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95052199-BD91-430D-A8CF-1F72C74264E8}
+	EndGlobalSection
+EndGlobal

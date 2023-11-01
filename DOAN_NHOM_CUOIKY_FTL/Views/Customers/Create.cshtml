@@ -1,0 +1,59 @@
+﻿@model DOAN_NHOM_CUOIKY_FTL.Models.Customer
+@{
+    ViewBag.Title = "Đăng Kí";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .hinh-dk{
+        position:absolute;
+        top:-60px;
+    }
+     .field-validation-error {
+        color: red;
+    }
+
+</style>
+@using (Html.BeginForm("Create", "Customers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="login">
+        <div class="form">
+            <h2 style="color:white" style="position:relative; top: -40px;">ĐĂNG KÍ</h2>
+            <div class="hinh-login">
+                <img class="hinh-dk" src="~/Content/img-logo/logo-no-background.png" alt="HUFLIT LOGO" width="150">
+            </div>
+
+            <div class="place">
+                <p>Nhập Tên Tài Khoản </p>
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { placeholder = "Tài Khoản" } })
+                @Html.ValidationMessageFor(model => model.UserName)
+                @if (ViewBag.ErrorInfo != null)
+                {
+                    <p style="color:red">@ViewBag.ErrorInfo</p>
+                } 
+
+            </div>
+            <div class="place">
+                <p>Nhập SĐT</p>
+                @Html.EditorFor(model => model.PhoneCus, new { htmlAttributes = new { placeholder = "Số Điện Thoại" } })
+                @Html.ValidationMessageFor(model => model.PhoneCus)
+            </div>
+            <div class="place">
+                <p>Nhập Mật Khẩu</p>
+
+                @Html.PasswordFor(model => model.Password, new { placeholder = "Mật Khẩu" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <input type="submit" value="Đăng Kí" class="submit" id="sub">
+            <div style="font-size: 20px; margin-top: 10px">
+                <a style="color:white;" href="~/Products/slideshow" class="glyphicon glyphicon-home" style="font-size:large"> Trở về trang chủ</a>
+            </div>
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to List", "slideshow","Products")
+</div>

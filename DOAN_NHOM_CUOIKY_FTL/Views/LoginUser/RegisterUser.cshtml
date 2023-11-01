@@ -1,0 +1,58 @@
+﻿@model DOAN_NHOM_CUOIKY_FTL.Models.AdminUser
+
+@{
+    ViewBag.Title = "RegisterUser";
+    Layout = null;
+}
+
+<style>
+    .form-dk{
+        border:1px solid black;
+        width:50%;
+        margin-left:400px;
+    }
+    .login{
+        margin-left:350px;
+    }
+</style>
+<div class="form-dk">
+
+
+    <h2 style="color:black; text-align:center" style="position:relative; top: -40px;">ĐĂNG KI NHÂN VIÊN</h2>
+
+    @using (Html.BeginForm("RegisterUser", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="login">
+            <div class="form">
+                <div class="place">
+                    @Html.AntiForgeryToken()
+                    <p>Nhập Tên </p>
+                    @Html.EditorFor(model => model.NameUser)
+                    @Html.ValidationMessageFor(model => model.NameUser)
+                </div>
+                <div class="place">
+                    @Html.AntiForgeryToken()
+                    <p>Nhập ID</p>
+
+                    @Html.EditorFor(model => model.ID)
+                    @Html.ValidationMessageFor(model => model.ID)
+                </div>
+                <div class="place">
+                    @Html.AntiForgeryToken()
+                    <p>Nhập Vị Trí </p>
+
+                    @Html.EditorFor(model => model.RoleUser)
+                    @Html.ValidationMessageFor(model => model.RoleUser)
+                </div>
+                <div class="place">
+                    <p>Nhập Mật Khẩu</p>
+                    @Html.PasswordFor(model => model.PasswordUser)
+                    @Html.ValidationMessageFor(model => model.PasswordUser)
+                </div>
+                <input type="submit" value="Đăng Kí" class="submit" id="sub">
+            </div>
+        </div>
+
+    }
+</div>

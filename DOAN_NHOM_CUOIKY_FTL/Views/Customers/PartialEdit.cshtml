@@ -1,0 +1,8 @@
+﻿@model List<DOAN_NHOM_CUOIKY_FTL.Models.Customer>
+@{
+    foreach (var item in Model)
+    {
+        @Html.ActionLink(item.NameCus, "Edit", "Customers", new { customer = item.IDCus }, "")
+
+    }
+}

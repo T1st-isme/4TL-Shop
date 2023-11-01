@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "EmptyCart";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    #img-cart{
+        padding-top:20px;
+        position:absolute;
+        top:100px;
+        left:45%;
+        margin-top:30px;
+    }
+    #font-cart {    
+        position: absolute;
+        top: 330px;
+        left: 46%;
+        margin-top: 30px;
+        font-size: 20px;
+        color: white;
+        border: 1px solid orangered;
+        padding: 10px;
+        background-color: orangered;
+    }
+    #font-cart:hover{
+        color:orangered;
+        background-color:white;
+    }
+    
+</style>
+<div id="cart-empty">
+    <img id="img-cart" src="~/Content/Img-Cart/cart.png" />
+    <a id="font-cart" href="/Products/Index">Xem Các Sản Phẩm Khác</a>
+</div>     
+

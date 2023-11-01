@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DOAN_NHOM_CUOIKY_FTL.Models.OrderPro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Ngày đặt hàng</p>
+        </th>
+        <th></th>
+        <th>
+            <p>Mã khách hàng</p>
+        </th>
+        <th></th>
+        <th>
+            <p>Địa chỉ giao hàng</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrder)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCus)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressDeliverry)
+            </td>
+            <td></td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "DetailsAD", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

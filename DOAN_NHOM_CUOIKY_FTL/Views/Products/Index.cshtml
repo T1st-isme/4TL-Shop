@@ -1,0 +1,60 @@
+﻿@*@model IEnumerable<DOAN_NHOM_CUOIKY_FTL.Models.Product>*@
+@using DOAN_NHOM_CUOIKY_FTL.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Sản Phẩm";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    .menu-page li {
+        display: inline;
+        color: black;
+    }
+    .menu-page a {
+        padding: 0 10px 0;
+        color: black;
+        margin-top: 10px;
+    }
+    .card-li {
+        margin-bottom: 10px;
+    }
+    .menu-page a:hover {
+        background-color: white;
+        color: black;
+    }
+    #position-search {
+        margin-left: 600px;
+        padding-top:15px;
+    }
+</style>
+<div class="wrapper">
+    <div id="position-search">
+        @{Html.RenderAction("CategoryPartial");}
+    </div>
+    <div class="container">
+        <p style="font-size:30px;font-weight:bold;font-family:'Global Sans Serif';margin-top:50px;">DANH SÁCH SẢN PHẨM</p>
+        <div class="row">
+            @foreach (var pro in Model)
+            {
+                <a href="/Products/Viewdetail/@pro.ProductID" class="btn btn-dafault">
+                    <div class="card">
+                        <div id="font-chu">
+                            <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                            <p class="font-text">@Html.DisplayFor(model => pro.NamePro)</p>
+                            <p class="font-text">@Html.DisplayFor(model => pro.Price)</p>
+                            <a class="font-text-buy" href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-dafault">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+    <ul class="page-product">
+        <li class="card-li"> Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</li>
+        <li class="menu-page card-li">
+            @Html.PagedListPager(Model, Page => Url.Action("Index", new { page = Page }))
+        </li>
+    </ul>
+    
+</div>

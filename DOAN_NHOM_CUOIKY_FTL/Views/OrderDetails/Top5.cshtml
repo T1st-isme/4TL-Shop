@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DOAN_NHOM_CUOIKY_FTL.Models.ViewModel>
+@{
+    ViewBag.Title = "GroupbyTop5";
+    Layout = null;
+}
+
+<div id="slideshow">
+    <div id="slideshow1">
+        <div class="slidechange">
+            @foreach (var pro in Model)
+            {
+                <a href="/Products/Viewdetail/@pro.IDPro" class="btn btn-dafault">
+                    <div class="slide">
+                        <img src="@Url.Content(pro.ImgPro)" height="150" width="150" />
+                    </div>
+                </a>
+            }
+        </div>
+        }
+    </div>
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <a href="/Products/Viewdetail/@pro.IDPro" class="btn btn-dafault">
+                <div class="card">
+                    <div id="font-chu">
+                        <img src="@Url.Content(pro.ImgPro)" height="150" width="150" />
+                        <p class="font-text">@Html.DisplayFor(model => pro.NamePro)</p>
+                        <p class="font-text">@Html.DisplayFor(model => pro.pricePro)</p>
+                        <a class="font-text-buy" href="/ShoppingCart/AddToCart/@pro.IDPro" class="btn btn-dafault">Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

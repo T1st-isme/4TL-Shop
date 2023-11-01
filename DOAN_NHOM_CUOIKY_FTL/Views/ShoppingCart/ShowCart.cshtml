@@ -1,0 +1,141 @@
+﻿@model DOAN_NHOM_CUOIKY_FTL.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    .table{
+        font-size:20px;
+    }
+</style>
+@if (Model != null)
+{
+    <div class="table" style="margin-left:200px">
+        <h2 style="font-size:35px;margin:0;padding-top:50px;padding-bottom:20px">Giỏ Hàng</h2>
+
+        <table class="table">
+            <thead>
+                <tr style="font-size:25px">
+                    <th style="padding-right:100px;">Tên sản phẩm</th>
+                    <th></th>
+                    <th></th>
+                    <th style="padding-right:100px;">Hình sản phẩm</th>
+                    <th></th>
+                    <th></th>
+                    <th style="padding-right:100px;">Giá</th>
+                    <th></th>
+                    <th></th>
+                    <th style="padding-right:100px;">Số lượng</th>
+                    <th></th>
+                    <th></th>
+                    <th style="padding-right:100px;">Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <hr />
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    decimal total = item._quantity * (decimal)item._product.Price.Value;
+                    <tr>
+                        <td>@Html.DisplayFor(model => item._product.NamePro)</td>
+                        <td></td>
+                        <td></td>
+
+                        <td><img src="@Url.Content(item._product.ImagePro)" height="90" width="80" /></td>
+                        <td></td>
+                        <td></td>
+                        <td>@Html.DisplayFor(model => item._product.Price)</td>
+                        <td></td>
+                        <td></td>
+
+                        <td>
+
+                            @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                            {<input type="hidden" value="@item._product.ProductID" name="idPro" />
+                                <input type="number" value="@item._quantity" name="cartQuantity" />
+                                <input type="submit" value="Update" />
+                            }
+                        </td>
+                        <td></td>
+                        <td></td>
+
+                        <td>@total.ToString("#,##0").Replace(',', '.')triệu đồng</td>
+                        <td></td>
+
+                        <td>
+                            <a href="/ShoppingCart/RemoveCart/@item._product.ProductID">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    
+                    <td colspan="7" style="text-align:right; font-size:x-large; color: crimson;">
+                        Tổng tiền : @Model.Total_money().ToString("#,##0").Replace(',', '.')Triệu Đồng
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <br />
+                        <fieldset class="field-set-table" style="width:500px">
+                            <legend style="font-size:25px">
+                                THÔNG TIN ĐƠN HÀNG
+
+                            </legend>
+                            @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                            {
+                                <table style="border-collapse:separate; border-spacing:5px;">
+                                    <tr>
+                                        <td></td>
+                                        <td><input type="hidden" name="CodeCustomer" value="@Session["IDCus"]" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:17px"> Khách hàng : </td>
+                                        <td><input type="text" name="NameCustomer" value="@Session["NameCus"]" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:17px"> Điên thoại : </td>
+                                        <td><input type="text" name="PhoneCustomer" value="@Session["PhoneCus"]" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size:17px"> Địa chỉ giao hàng :  </td>
+                                        <td> <input type="text" name="AddressDeliverry" required /></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                           
+
+                                            <input type="submit" value="Thanh toán" class="btn btn-danger" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <a style="font-size:17px" href="@Url.Action("LoginCus", "Customers")" class="btn btn-primary">Đăng nhập</a>
+                                            (Hãy đăng nhập trước)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        
+                                    </tr>
+                                </table>
+
+                            }
+                        </fieldset>
+                    </td>
+                    <td colspan="3"></td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+}
+else
+{
+    @Html.Partial("EmptyCart")
+}

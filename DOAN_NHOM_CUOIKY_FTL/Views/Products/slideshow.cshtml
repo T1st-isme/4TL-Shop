@@ -31,7 +31,7 @@
                 {
                     <a href="/Products/Viewdetail/@pro.ProductID" class="btn btn-dafault">
                         <div class="slide">
-                            <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                            <img src="~/Content/imgs/@pro.ImagePro" height="300" width="100" />
                         </div>
                     </a>
                 }
@@ -44,7 +44,7 @@
                 <a href="/Products/Viewdetail/@pro.ProductID" class="btn btn-dafault">
                     <div class="card">
                         <div id="font-chu">
-                            <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                            <img src="~/Content/imgs/@pro.ImagePro" height="150" width="150" />
                             <p class="font-text">@Html.DisplayFor(model => pro.NamePro)</p>
                             <p class="font-text">@Html.DisplayFor(model => pro.Price)</p>
                             <a class="font-text-buy" href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-dafault">Thêm vào giỏ hàng</a>

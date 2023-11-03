@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 <style>
-    .table{
-        font-size:20px;
+    .table {
+        font-size: 20px;
     }
 </style>
 @if (Model != null)
@@ -43,7 +43,7 @@
                         <td></td>
                         <td></td>
 
-                        <td><img src="@Url.Content(item._product.ImagePro)" height="90" width="80" /></td>
+                        <td><img src="~/Content/imgs/@item._product.ImagePro" height="90" width="80" /></td>
                         <td></td>
                         <td></td>
                         <td>@Html.DisplayFor(model => item._product.Price)</td>
@@ -72,7 +72,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    
+
                     <td colspan="7" style="text-align:right; font-size:x-large; color: crimson;">
                         Tổng tiền : @Model.Total_money().ToString("#,##0").Replace(',', '.')Triệu Đồng
                     </td>
@@ -83,7 +83,6 @@
                         <fieldset class="field-set-table" style="width:500px">
                             <legend style="font-size:25px">
                                 THÔNG TIN ĐƠN HÀNG
-
                             </legend>
                             @using (Html.BeginForm("CheckOut", "ShoppingCart"))
                             {
@@ -107,7 +106,6 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                           
 
                                             <input type="submit" value="Thanh toán" class="btn btn-danger" />
                                         </td>
@@ -121,7 +119,6 @@
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        
                                     </tr>
                                 </table>
 
@@ -131,7 +128,6 @@
                     <td colspan="3"></td>
                 </tr>
             </tfoot>
-
         </table>
     </div>
 }

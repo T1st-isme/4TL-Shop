@@ -7,7 +7,7 @@
 
 <div class="main">
     <div class="main-left">
-        <img src="@Url.Content(@Model.ImagePro)" alt="" class="main-left__img" width="634" height="628" />
+        <img src="~/Content/imgs/@Model.ImagePro" alt="" class="main-left__img" width="634" height="628" />
     </div>
     <div class="main-right">
         <div class="main-right__det">
@@ -21,13 +21,10 @@
                     <div>
                         <p>Kho: @Html.DisplayFor(model => model.Quantity)</p>
                         <p>Mô Tả:</p>
-
                     </div>
-                   
                 </div>
             </div>
             <a class="main-right__det-header-descrip--buy" href="/ShoppingCart/AddToCart/@Model.ProductID">Thêm Vào Giỏ Hàng</a>
-
         </div>
     </div>
 </div>
@@ -35,17 +32,6 @@
 <div>
     <p style="text-align:center;font-size:28px;">Thông Tin Mô Tả Sản Phẩm</p>
     <div style="margin-left:600px;font-size:20px;">
-        <img src="@Url.Content(@Model.DecriptionPro)" width="500" height="600" />
+        <img src="~/Content/img-text/@Model.DecriptionPro" width="700" height="600" />
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-

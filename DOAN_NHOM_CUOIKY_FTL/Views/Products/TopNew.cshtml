@@ -7,23 +7,18 @@
     ViewBag.Title = "TopNew";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
-
- 
- 
 </div>
 <div id="slideshow">
     <div id="slideshow1">
         <div class="slidechange">
             @foreach (var pro in Model)
             {
-              <a href="/Products/Details/@pro.ProductID" class="btn btn-dafault">
-                  <div class="slide">
-                      <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
-                  </div>
-                  </a>
-                  }
-</div>
-        }
+                <a href="/Products/Details/@pro.ProductID" class="btn btn-dafault">
+                    <div class="slide">
+                        <img src="~/Content/imgs/@pro.ImagePro" height="150" width="150" />
+                    </div>
+                </a>
+            }
+        </div>
     </div>
 </div>
-

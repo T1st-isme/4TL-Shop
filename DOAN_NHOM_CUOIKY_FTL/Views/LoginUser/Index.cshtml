@@ -11,14 +11,14 @@
     <div class="login">
 
         <div class="form">
-            <h2 style="color:white" style="position:relative; top: -40px;">ĐĂNG NHAP</h2>
-           
+            <h2 style="color:white;position:relative; top: -40px;">ĐĂNG NHAP</h2>
+
             <div class="place">
                 <p>Tài Khoản</p>
                 @Html.TextBoxFor(model => model.NameUser, new { style = "field-validation-error" })
                 @Html.ValidationMessageFor(model => model.NameUser)
             </div>
-            
+
             <div class="place">
                 <p>Nhập Mật Khẩu</p>
                 @Html.EditorFor(model => model.PasswordUser)
@@ -29,9 +29,6 @@
                 }
             </div>
             <input type="submit" value="Đăng Nhập" class="submit" id="sub">
-            
         </div>
     </div>
 }
-
-
